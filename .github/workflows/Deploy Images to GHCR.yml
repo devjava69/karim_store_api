@@ -4,9 +4,9 @@ env:
   DOTNET_VERSION: '7.0.x'
 
 on:
-  pull_request:
+  push:
     branches:
-      - Develop
+      - main
 
 jobs:
       push-store-image:
