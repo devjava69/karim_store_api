@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  karim_eshop:
+    image: ${DOCKER_REGISTRY-}karimeshop
+    build:
+      context: .
+      dockerfile: Karim_eShop/Dockerfile
+
+  karim_eshop_db:
+    image: mysql
+
+  karim_eshop_db_adminer:
+    image: adminer
+
+volumes:
+  mysql_data:

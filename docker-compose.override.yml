@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  karim_eshop:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:BddConnection=Server=karim_eshop_db;User=root;Password=example;Database=karim_eshop;port=3306"
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "8000:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  karim_eshop_db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_USER=root
+      - MYSQL_DATABASE= karim_eshop
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  karim_eshop_db_adminer:
+    restart: always
+    ports:
+      - 8080:8080
